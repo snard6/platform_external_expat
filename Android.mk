@@ -23,45 +23,6 @@ common_COPY_HEADERS := \
 	lib/expat.h \
 	lib/expat_external.h
 
-# For the host
-# =====================================================
-
-include $(CLEAR_VARS)
-
-LOCAL_SRC_FILES := $(common_SRC_FILES)
-LOCAL_CFLAGS += $(common_CFLAGS)
-LOCAL_C_INCLUDES += $(common_C_INCLUDES)
-
-ifeq ($(HOST_OS),darwin)
-	LOCAL_CFLAGS += -fno-common
-endif
-
-LOCAL_MODULE:= libexpat
-LOCAL_ADDITIONAL_DEPENDENCIES := $(LOCAL_PATH)/Android.mk
-LOCAL_MODULE_TAGS := optional
-
-include $(BUILD_HOST_STATIC_LIBRARY)
-
-
-include $(CLEAR_VARS)
-
-LOCAL_SRC_FILES := $(common_SRC_FILES)
-LOCAL_CFLAGS += $(common_CFLAGS)
-LOCAL_C_INCLUDES += $(common_C_INCLUDES)
-
-ifeq ($(HOST_OS),darwin)
-	LOCAL_CFLAGS += -fno-common
-endif
-
-LOCAL_MODULE:= libexpat
-LOCAL_ADDITIONAL_DEPENDENCIES := $(LOCAL_PATH)/Android.mk
-LOCAL_MODULE_TAGS := optional
-LOCAL_COPY_HEADERS_TO := $(common_COPY_HEADERS_TO)
-LOCAL_COPY_HEADERS := $(common_COPY_HEADERS)
-
-include $(BUILD_HOST_SHARED_LIBRARY)
-
-
 # For the device
 # =====================================================
 
